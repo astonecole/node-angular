@@ -1,0 +1,26 @@
+::ng-deep body {
+  background-image: url('/assets/bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+.login-container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login {
+  width: 350px;
+  background-color: rgba(255, 255, 255, 0.8);
+  margin: auto;
+}
+
+.login-form {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+}

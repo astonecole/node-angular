@@ -1,0 +1,33 @@
+{
+  "name": "aston-express",
+  "version": "0.1.0",
+  "description": "Jobs API",
+  "main": "main.js",
+  "scripts": {
+    "prestart": "docker-compose up -d",
+    "start": "nodemon",
+    "clear": "docker-compose down -v",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vincent Letourneau",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^3.0.3",
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "express-basic-auth": "^1.1.6",
+    "jsonwebtoken": "^8.4.0",
+    "merge": "^1.2.1",
+    "morgan": "^1.9.1",
+    "mysql2": "^1.6.4",
+    "nodemon": "^1.18.9",
+    "pug": "^2.0.3",
+    "sequelize": "^4.42.0"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.0",
+    "pem": "^1.13.2"
+  }
+}

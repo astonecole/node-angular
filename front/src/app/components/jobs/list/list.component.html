@@ -1,0 +1,13 @@
+<mat-card class="list-card" *ngFor="let job of jobs">
+
+    <mat-card-title>{{ job.title | titlecase  }}</mat-card-title>
+    <mat-card-subtitle>{{ job.company | titlecase }}</mat-card-subtitle>
+
+    <mat-card-content>
+        <p>{{ job.description }}</p>
+    </mat-card-content>
+
+    <mat-card-actions>
+        <button mat-button routerLink="/jobs/{{ job.id }}">Détails</button>
+    </mat-card-actions>
+</mat-card>

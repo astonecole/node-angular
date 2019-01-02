@@ -1,0 +1,8 @@
+{
+    "app": {
+        "name": "Aston API PROD"
+    },
+    "server": {
+        "port": 8080
+    }
+}

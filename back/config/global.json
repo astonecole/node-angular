@@ -1,0 +1,18 @@
+{
+    "app": {
+        "name": "Aston API PROD",
+        "version": "0.1.0"
+    },
+    "db": {
+        "default": {
+            "url": "mysql://dev:dev@localhost/jobapi"
+        }
+    },
+    "server": {
+        "addr": "localhost",
+        "port": 8000,
+        "jwt": {
+            "expiresIn": 180
+        }
+    }
+}

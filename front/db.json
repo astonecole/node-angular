@@ -1,0 +1,15 @@
+{
+  "jobs": [
+    {
+      "title": "Recherche développeur fullstack",
+      "company": "Aston",
+      "city": "Lille",
+      "zipcode": "59160",
+      "description": "Description du poste.",
+      "contractType": 4,
+      "startDate": "2018-12-18T23:00:00.000Z",
+      "publishedDate": "2018-12-10T13:46:58.308Z",
+      "id": 1
+    }
+  ]
+}

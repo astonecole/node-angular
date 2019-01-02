@@ -1,0 +1,38 @@
+.flashmsg {
+    background-color: #F0F0F0;
+    border: 1px solid #CCC;
+    color: #333;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: baseline;
+    padding: 0 16px;
+}
+
+.flashmsg-close-btn {
+    margin-left: auto;
+    background-color: #d8d8d8;
+    padding: 2px 6px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.flashmsg-err {
+    background-color: rgb(255, 238, 240);
+    color: #FF0000;
+    border: 1px solid currentColor;
+}
+
+.flashmsg-err > .flashmsg-close-btn {
+    background-color: #ffcdd3;
+}
+
+.flashmsg-success {
+    background-color: #c8ffe8;
+    color: #54b38b;
+    border: 1px solid currentColor;
+}
+
+.flashmsg-success > .flashmsg-close-btn {
+    background-color: #8feec6;
+}

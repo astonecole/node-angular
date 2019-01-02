@@ -1,0 +1,70 @@
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { LayoutModule } from '@angular/cdk/layout';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import {
+  MatToolbarModule,
+  MatButtonModule,
+  MatSidenavModule,
+  MatIconModule,
+  MatListModule,
+  MatInputModule,
+  MatFormFieldModule,
+  MatCardModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatSelectModule
+} from '@angular/material';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { MainNavComponent } from './components/main-nav/main-nav.component';
+import { FlashmsgComponent } from './components/flashmsg/flashmsg.component';
+import { HomeComponent } from './components/home/home.component';
+import { AddComponent } from './components/jobs/add/add.component';
+import { ListComponent } from './components/jobs/list/list.component';
+import { DeleteComponent } from './components/jobs/delete/delete.component';
+import { DetailsComponent } from './components/jobs/details/details.component';
+import { LoginComponent } from './components/login/login.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    HomeComponent,
+    AddComponent,
+    ListComponent,
+    DeleteComponent,
+    DetailsComponent,
+    MainNavComponent,
+    FlashmsgComponent,
+    LoginComponent,
+    DashboardComponent
+  ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    AppRoutingModule,
+    LayoutModule,
+    FormsModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatCardModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
+    MatSelectModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
