@@ -4,9 +4,10 @@
   "description": "Jobs API",
   "main": "main.js",
   "scripts": {
-    "prestart": "docker-compose up -d",
     "start": "nodemon",
-    "clear": "docker-compose down -v",
+    "gencert": "gulp gencert",
+    "dockerUp": "docker-compose up -d",
+    "dockerDown": "docker-compose down -v",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Vincent Letourneau",
@@ -24,7 +25,8 @@
     "mysql2": "^1.6.4",
     "nodemon": "^1.18.9",
     "pug": "^2.0.3",
-    "sequelize": "^4.42.0"
+    "sequelize": "^4.42.0",
+    "sequelize-cli": "^5.4.0"
   },
   "devDependencies": {
     "gulp": "^4.0.0",

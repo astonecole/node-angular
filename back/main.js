@@ -7,13 +7,7 @@ const cors = require('./middlewares/cors');
 const jwtCheck = require('./middlewares/jwt-check');
 const cookieParser = require('cookie-parser');
 const https = require('https');
-const pem = require('pem');
 const fs = require('fs');
-
-const corsOptions = {
-    credentials: true,
-    origin: 'http://localhost:4200'
-};
 
 // Création de l'application.
 app = express();
@@ -26,18 +20,30 @@ conf = config.load();
 // Connection à la base de donées.
 Sequelize = require('sequelize');
 sequelize = new Sequelize(conf.db.default.url, {
-    logging: false,
+    logging: console.log, // console.log | false
     freezeTableName: true,
-    operatorsAliases: false
+    operatorsAliases: false,
+
+    // Specify options, which are used when sequelize.define is called.
+    define: {
+        force: false,
+        timestamps: true
+    }
 });
 
-sequelize.sync({ force: false })
-    .then(() => {
-        console.log('Database & tables created.');
-    });
+sequelize
+    .authenticate()
+    .then(
+        () => {
+            console.log('Connection has been established successfully.');
+        },
+        err => {
+            console.error('Unable to connect to the database:', err.message);
+        }
+    )
 
 // App
-app.use(cors(corsOptions));
+app.use(cors(conf.security.cors));
 app.use(morgan('tiny'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -45,7 +51,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 // Api
-api.use(cors(corsOptions));
+api.use(cors(conf.security.cors));
 api.use(cookieParser());
 api.use(jwtCheck);
 api.use(bodyParser.urlencoded({ extended: true }));
@@ -56,18 +62,11 @@ app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 app.locals.pretty = false;
 
-/**
- * Démarrage du serveur.
- * 
- * @see https://www.npmjs.com/package/pem#express
- */
-pem.createCertificate({ days: 5, selfSigned: true }, (err, keys) => {
-    // Chargement des routes.
-    require(path.join(__dirname, 'routes'));
+require(path.join(__dirname, 'routes'));
 
-    https.createServer({ key: keys.serviceKey, cert: keys.certificate }, app)
-        .listen(conf.server.port);
+const options = {
+    key: fs.readFileSync(path.join(__dirname, 'data', 'ssl', 'api.key')),
+    cert: fs.readFileSync(path.join(__dirname, 'data', 'ssl', 'api.cert'))
+}
 
-    fs.writeFileSync(path.join('data', 'ssl', 'jobs.cert'), keys.certificate, 'utf8');
-    fs.writeFileSync(path.join('data', 'ssl', 'jobs.key'), keys.clientKey, 'utf8');
-});
+https.createServer(options, app).listen(conf.server.port);

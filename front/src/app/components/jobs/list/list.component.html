@@ -1,3 +1,5 @@
+<h1>Liste des Jobs</h1>
+
 <mat-card class="list-card" *ngFor="let job of jobs">
 
     <mat-card-title>{{ job.title | titlecase  }}</mat-card-title>
@@ -8,6 +10,6 @@
     </mat-card-content>
 
     <mat-card-actions>
-        <button mat-button routerLink="/jobs/{{ job.id }}">Détails</button>
+        <button mat-button [routerLink]="['/jobs', job.id]">Détails</button>
     </mat-card-actions>
 </mat-card>

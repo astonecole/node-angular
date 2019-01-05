@@ -19,13 +19,14 @@ import {
 } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { MainNavComponent } from './components/main-nav/main-nav.component';
 import { FlashmsgComponent } from './components/flashmsg/flashmsg.component';
 import { HomeComponent } from './components/home/home.component';
 import { AddComponent } from './components/jobs/add/add.component';
+import { EditComponent } from './components/jobs/edit/edit.component';
 import { ListComponent } from './components/jobs/list/list.component';
-import { DeleteComponent } from './components/jobs/delete/delete.component';
 import { DetailsComponent } from './components/jobs/details/details.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -37,12 +38,12 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     HomeComponent,
     AddComponent,
     ListComponent,
-    DeleteComponent,
     DetailsComponent,
     MainNavComponent,
     FlashmsgComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,

@@ -9,7 +9,7 @@ import { FlashmsgService } from 'src/app/services/flashmsg.service';
 
 @Component({
   selector: 'app-add',
-  templateUrl: './add.component.html',
+  templateUrl: '../edit/edit.component.html',
   styleUrls: ['./add.component.css']
 })
 export class AddComponent implements OnInit {
@@ -24,28 +24,19 @@ export class AddComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.form = this.formBuilder.group({
-      title: '',
-      company: '',
-      city: '',
-      zipcode: '',
-      description: '',
-      contractType: '',
-      startDate: new Date(),
-      publishedDate: new Date()
-    });
+    this.form = this.formBuilder.group(new Job());
   }
 
-  addJob() {
+  onSave() {
     this.jobsService
       .add(this.form.value)
       .subscribe(
         (job: Job) => {
-          this.flashmsgService.add('Job ajouté', 'success');
+          this.flashmsgService.add(`Le job "${this.form.value.title}" ajouté`, 'success');
           this.form.reset();
           this.router.navigate(['/jobs']);
         },
-        (err) => {
+        err => {
           console.log('Une erreur est survenue');
         }
       );

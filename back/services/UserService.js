@@ -2,12 +2,16 @@ const UserModel = require('../models/UserModel');
 const bcryptPassword = require('../utils/bcrypt-password');
 
 function create(data) {
-    return UserModel.create({
-        name: data.name,
-        email: data.email,
-        password: data.password,
-        active: true
-    });
+    return UserModel.sync().then(
+        () => {
+            return UserModel.create({
+                name: data.name,
+                email: data.email,
+                password: data.password,
+                active: true
+            });
+        }
+    );
 }
 
 function findByEmail(email) {

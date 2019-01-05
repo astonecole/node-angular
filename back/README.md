@@ -2,22 +2,28 @@
 
 ## installation
 
-### Installation d'un nouveau projet
-
-```sh
-npm install --save express morgan mysql2 sequelize nodemon pug body-parser
-```
-
 ### Installation d'un projet déjà existant
 
-```sh
+```bash
 npm install
+```
+
+### Génération de certificats TSL/SSL
+
+```bash
+npm run gencert
 ```
 
 ## Configuring SSL with Postman
 
 - [Using self signed certificate](http://blog.getpostman.com/2014/01/28/using-self-signed-certificates-with-postman)
 - [Postman application settings](https://learning.getpostman.com/docs/postman/launching_postman/settings/)
+
+## Démarrage de l'application
+
+```bash
+npm start
+```
 
 ## Problème de connection à la base de données (Résolue)
 

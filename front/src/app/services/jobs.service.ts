@@ -43,8 +43,8 @@ export class JobsService {
   /**
    * Delete a job by its ID.
    */
-  delete(id: Number) {
-    return this.http.delete(`${API_BASE_URL}/${id}`)
+  delete(job: Job) {
+    return this.http.delete(`${API_BASE_URL}/${job.id}`)
       .pipe(
         tap(res => {
           console.log(res);
@@ -55,7 +55,7 @@ export class JobsService {
   /**
    * Update a jobs by its ID.
    */
-  update() {
-
+  update(job: Job) {
+    return this.http.put<Job>(`${API_BASE_URL}`, job);
   }
 }

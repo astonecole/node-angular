@@ -1,4 +1,4 @@
-::ng-deep body {
+::ng-deep body .login-container {
   background-image: url('/assets/bg.jpg');
   background-repeat: no-repeat;
   background-size: cover;
@@ -14,7 +14,7 @@
 }
 
 .login {
-  width: 350px;
+  width: 21.875rem;
   background-color: rgba(255, 255, 255, 0.8);
   margin: auto;
 }

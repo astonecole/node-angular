@@ -1,13 +1,13 @@
 import { ContractType } from './contract-type.model';
 
-export interface Job {
+export class Job {
     id?: Number;
-    title: string;
-    company: string;
-    city: string;
-    zipcode: string;
-    description: string;
-    contractType: ContractType;
-    startDate: Date;
-    publishedDate: Date;
+    title = '';
+    company = '';
+    city = '';
+    zipcode = '';
+    description = '';
+    contractType: ContractType = null;
+    startDate: Date = null;
+    publishedDate: Date = null;
 }

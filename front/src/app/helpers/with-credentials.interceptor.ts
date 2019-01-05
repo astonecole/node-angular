@@ -10,8 +10,6 @@ export class WithCredentialInterceptor implements HttpInterceptor {
         request = request.clone({
             withCredentials: true
         });
-
-        request = request.clone();
         return next.handle(request);
     }
 }

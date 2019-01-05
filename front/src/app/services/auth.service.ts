@@ -13,7 +13,7 @@ const LOCAL_STORAGE_USER_KEY = 'currentItem';
 })
 export class AuthService {
     private currentUserSubject: BehaviorSubject<User>;
-    public currentUser: Observable<User>;
+    public currentUser: Observable<User> = null;
 
     constructor(private http: HttpClient) {
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem(LOCAL_STORAGE_USER_KEY)));
@@ -51,5 +51,9 @@ export class AuthService {
         // remove user form local storage to log user out.
         localStorage.removeItem(LOCAL_STORAGE_USER_KEY);
         this.currentUserSubject.next(null);
+    }
+
+    isLoggedIn() {
+        return this.currentUser !== null;
     }
 }

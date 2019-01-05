@@ -1,4 +1,4 @@
-const config = require('../config').load();
+const conf = require('../config').load();
 const jwt = require('jsonwebtoken');
 const JWT_SECRET_KEY = 'sdf34@dsf5sdrzeuoPU3BS78R?SDKLSD5df58sdf6-SDF5jkfdkjsJH';
 
@@ -11,7 +11,7 @@ exports.generateToken = (user, callback) => {
         JWT_SECRET_KEY,
         {
             algorithm: 'HS256',
-            expiresIn: 120
+            expiresIn: conf.security.jwt.expiresIn
         },
         callback
     );
