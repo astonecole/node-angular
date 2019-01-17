@@ -5,7 +5,6 @@ import { map, tap } from 'rxjs/operators';
 
 import { User } from '../models/user.model';
 
-const API_BASE_URL = 'https://localhost:3000';
 const LOCAL_STORAGE_USER_KEY = 'currentItem';
 
 @Injectable({
@@ -24,13 +23,13 @@ export class AuthService {
         return this.currentUserSubject.value;
     }
 
-    login(email: string, password: string) {
+    login(email: string, password: string): Observable<User> {
         const data = {
             email: email,
             password: password
         };
 
-        return this.http.post<User>(`${API_BASE_URL}/authentication`, data)
+        return this.http.post<User>('/authentication', data)
             .pipe(tap(user => {
                 console.log(user);
             }))
@@ -47,13 +46,9 @@ export class AuthService {
             }));
     }
 
-    logout() {
+    logout(): void {
         // remove user form local storage to log user out.
         localStorage.removeItem(LOCAL_STORAGE_USER_KEY);
         this.currentUserSubject.next(null);
-    }
-
-    isLoggedIn() {
-        return this.currentUser !== null;
     }
 }

@@ -12,6 +12,8 @@ import { MainNavComponent } from './components/main-nav/main-nav.component';
 import { WithCredentialInterceptor } from './helpers/with-credentials.interceptor';
 import { AuthGuard } from './guards/auth.guard';
 import { EditComponent } from './components/jobs/edit/edit.component';
+import { API_URL, ApiUrlInterceptor } from './helpers/url.interceptor';
+import { environment } from 'src/environments/environment.prod';
 
 const routes: Route[] = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -37,6 +39,16 @@ const routes: Route[] = [
         RouterModule.forRoot(routes),
     ],
     providers: [
+        {
+            provide: API_URL,
+            useValue: environment.apiUrl,
+        },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: ApiUrlInterceptor,
+            multi: true,
+            deps: [API_URL]
+        },
         {
             provide: HTTP_INTERCEPTORS,
             useClass: WithCredentialInterceptor,

@@ -5,19 +5,20 @@ import { map, tap } from 'rxjs/operators';
 
 import { Job } from '../models/job.model';
 
-const API_BASE_URL = 'https://localhost:3000/api/jobs';
+const API_PATH = '/api/jobs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class JobsService {
+
   constructor(private http: HttpClient) { }
 
   /**
    * Add a new job.
    */
-  add(job: Job) {
-    return this.http.post(API_BASE_URL, job, {
+  add(job: Job): Observable<Job> {
+    return this.http.post<Job>(API_PATH, job, {
       withCredentials: true
     });
   }
@@ -25,8 +26,8 @@ export class JobsService {
   /**
    * Find a job by its ID.
    */
-  find(id: Number) {
-    return this.http.get(`${API_BASE_URL}/${id}`)
+  find(id: Number): Observable<Job> {
+    return this.http.get<Job>(`${API_PATH}/${id}`)
       .pipe(map(res => res));
   }
 
@@ -34,7 +35,7 @@ export class JobsService {
    * Find all jobs.
    */
   all(): Observable<Job[]> {
-    return this.http.get<Job[]>(API_BASE_URL)
+    return this.http.get<Job[]>(API_PATH)
       .pipe(
         map(res => res)
       );
@@ -43,8 +44,8 @@ export class JobsService {
   /**
    * Delete a job by its ID.
    */
-  delete(job: Job) {
-    return this.http.delete(`${API_BASE_URL}/${job.id}`)
+  delete(job: Job): Observable<any> {
+    return this.http.delete<any>(`${API_PATH}/${job.id}`)
       .pipe(
         tap(res => {
           console.log(res);
@@ -55,7 +56,7 @@ export class JobsService {
   /**
    * Update a jobs by its ID.
    */
-  update(job: Job) {
-    return this.http.put<Job>(`${API_BASE_URL}`, job);
+  update(job: Job): Observable<any> {
+    return this.http.put<Job>(`${API_PATH}`, job);
   }
 }

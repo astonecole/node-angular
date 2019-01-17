@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { contractTypes } from '../../../data/jobs';
 import { ContractType } from '../../../models/contract-type.model';
 import { JobsService } from 'src/app/services/jobs.service';
@@ -24,12 +24,21 @@ export class AddComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.form = this.formBuilder.group(new Job());
+    this.form = this.formBuilder.group({
+      title: ['', Validators.required],
+      company: ['', Validators.required],
+      city: ['', [Validators.required, Validators.pattern(/^[a-z\s\-]{2,20}$/i)]],
+      zipcode: ['', Validators.pattern(/^[0-9]{4,6}$/)],
+      description: '',
+      contractType: null,
+      startDate: new Date(),
+      publishedDate: new Date()
+    });
   }
 
   onSave() {
     this.jobsService
-      .add(this.form.value)
+      .add(this.form.value as Job)
       .subscribe(
         (job: Job) => {
           this.flashmsgService.add(`Le job "${this.form.value.title}" ajouté`, 'success');

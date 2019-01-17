@@ -2,7 +2,7 @@
   <mat-toolbar-row>
     <span>Angular Jobs App</span>
     <span class="toolbar-spacer"></span>
-    <a mat-icon-button routerLink="/jobs">Jobs</a>
+    <a mat-icon-button routerLink="/jobs" *ngIf="currentUser">Jobs</a>
     <a mat-icon-button routerLink="/login">
       <mat-icon aria-label="User Account">account_box</mat-icon>
     </a>
@@ -11,6 +11,7 @@
 
 <div class="container">
   <mat-card>
-    Home works !
+    <h1>Bonjour {{ currentUser.name }}</h1>
+    <p>Votre ID est le numéro {{ currentUser.id }}</p>
   </mat-card>
 </div>
