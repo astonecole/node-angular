@@ -1,6 +1,6 @@
 <div class="button-row">
-  <button [routerLink]="[{ outlets: { submenu: ['a'] } }]" mat-button color="primary">Sub A</button>
-  <button [routerLink]="[{ outlets: { submenu: ['b'] } }]" mat-button color="primary">Sub B</button>
+  <button [routerLink]="[{ outlets: { submenu: ['a'] } }]" skipLocationChange mat-button color="primary">Sub A</button>
+  <button [routerLink]="[{ outlets: { submenu: ['b'] } }]" skipLocationChange mat-button color="primary">Sub B</button>
 </div>
 
 <router-outlet name="submenu"></router-outlet>
