@@ -92,3 +92,16 @@ function home(req, res) {
     console.log(req.body.firstname);
 }
 ```
+
+## Solutions
+
+Problème avec [NODEMON](https://stackoverflow.com/a/32600959) quand il a atteind la limite de fichier à surveiller.
+
+Linux :
+
+Run the below command to avoid ENOSPC:
+
+```bash
+echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+```
+

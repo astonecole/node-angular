@@ -40,7 +40,7 @@ sequelize
         err => {
             console.error('Unable to connect to the database:', err.message);
         }
-    )
+    );
 
 // App
 app.use(cors(conf.security.cors));
@@ -64,9 +64,10 @@ app.locals.pretty = false;
 
 require(path.join(__dirname, 'routes'));
 
+const dir = path.join(__dirname, 'data', 'ssl');
 const options = {
-    key: fs.readFileSync(path.join(__dirname, 'data', 'ssl', 'api.key')),
-    cert: fs.readFileSync(path.join(__dirname, 'data', 'ssl', 'api.cert'))
-}
+    key: fs.readFileSync(path.join(dir, 'api.key')),
+    cert: fs.readFileSync(path.join(dir, 'api.cert'))
+};
 
 https.createServer(options, app).listen(conf.server.port);

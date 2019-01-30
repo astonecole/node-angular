@@ -7,7 +7,7 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     ports:
-      - "3306:3306"
+      - "3310:3306"
     environment:
       MYSQL_USER: dev
       MYSQL_PASSWORD: dev
@@ -17,6 +17,6 @@ services:
       image: adminer
       restart: always
       ports:
-        - 8890:8080
+        - 8310:8080
       depends_on:
         - mysqldb

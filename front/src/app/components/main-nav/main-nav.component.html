@@ -5,9 +5,10 @@
       [opened]="!(isHandset$ | async)">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="/">Home</a>
-      <a mat-list-item routerLink="/jobs">Jobs</a>
-      <a mat-list-item routerLink="/jobs/add">Ajouter un job</a>
+      <a mat-list-item [routerLink]="['/']">Home</a>
+      <a mat-list-item [routerLink]="['/jobs/subnav']">Sub Navigation</a>
+      <a mat-list-item [routerLink]="['/jobs']">Jobs</a>
+      <a mat-list-item [routerLink]="['/jobs/add']">Ajouter un job</a>
       <a mat-list-item (click)="logout()" *ngIf="currentUser">Déconnexion</a>
     </mat-nav-list>
   </mat-sidenav>

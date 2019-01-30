@@ -5,12 +5,12 @@
     },
     "db": {
         "default": {
-            "url": "mysql://dev:dev@localhost/jobapi"
+            "url": "mysql://dev:dev@localhost:3310/jobapi"
         }
     },
     "security": {
         "pem": {
-            "days": 5,
+            "days": 30,
             "selfSigned": true
         },
         "cors": {

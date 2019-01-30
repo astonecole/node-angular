@@ -30,6 +30,9 @@ import { ListComponent } from './components/jobs/list/list.component';
 import { DetailsComponent } from './components/jobs/details/details.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { SubNavComponent } from './components/sub-nav/sub-nav.component';
+import { SubAComponent } from './components/sub-nav/sub-a/sub-a.component';
+import { SubBComponent } from './components/sub-nav/sub-b/sub-b.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,10 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     FlashmsgComponent,
     LoginComponent,
     DashboardComponent,
-    EditComponent
+    EditComponent,
+    SubNavComponent,
+    SubAComponent,
+    SubBComponent
   ],
   imports: [
     BrowserModule,

@@ -4,7 +4,8 @@
   "description": "Jobs API",
   "main": "main.js",
   "scripts": {
-    "start": "nodemon",
+    "start": "nodemon main.js",
+    "dev": "export NODE_ENV=development; npm start",
     "gencert": "gulp gencert",
     "dockerUp": "docker-compose up -d",
     "dockerDown": "docker-compose down -v",
